@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToolX - Online Image & PDF Tools</title>
-    <meta name="description" content="Free online tools for images and PDFs. Compress, convert, edit and optimize your files with our easy-to-use web tools.">
+    <title>ToolX - Free Online Image & PDF Tools</title>
+    <meta name="description" content="Free online tools for images and PDFs. Compress, convert, edit and optimize your files with ToolX's easy-to-use web tools.">
     
     <!-- Google Fonts - Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,9 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID" crossorigin="anonymous"></script>
     
     <style>
         :root {
@@ -178,6 +181,17 @@
             font-size: 1rem;
         }
         
+        /* Ad Banner */
+        .ad-banner {
+            background-color: var(--white);
+            padding: 15px;
+            margin: 30px auto;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 728px;
+        }
+        
         /* Features Section */
         .features {
             padding: 5rem 0;
@@ -329,6 +343,17 @@
         
         .tool-link:hover i {
             transform: translateX(3px);
+        }
+        
+        /* Sidebar Ad */
+        .ad-sidebar {
+            width: 300px;
+            padding: 15px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin: 20px auto;
+            text-align: center;
         }
         
         /* How It Works */
@@ -629,6 +654,13 @@
             .step {
                 max-width: 100%;
             }
+            
+            .ad-sidebar {
+                width: 100%;
+                max-width: 300px;
+                float: none !important;
+                margin: 20px auto;
+            }
         }
         
         @media (max-width: 576px) {
@@ -669,7 +701,7 @@
         <div class="container header-content">
             <a href="#" class="logo">
                 <i class="fas fa-tools"></i>
-                <span>ToolKitPro</span>
+                <span>ToolX</span>
             </a>
             
             <nav>
@@ -706,11 +738,27 @@
         </div>
     </section>
     
+    <!-- Top Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
     <!-- Features Section -->
     <section class="features">
         <div class="container">
             <div class="section-title">
-                <h2>Why Choose Our Tools</h2>
+                <h2>Why Choose ToolX</h2>
                 <p>We provide the best online tools with powerful features to make your work easier</p>
             </div>
             
@@ -766,141 +814,173 @@
         </div>
     </section>
     
-    <!-- Tools Section -->
-    <section class="tools">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Popular Tools</h2>
-                <p>Discover our collection of powerful tools to optimize your workflow</p>
-            </div>
-            
-            <div class="tools-tabs">
-                <button class="tab-btn active" data-tab="all">All Tools</button>
-                <button class="tab-btn" data-tab="image">Image Tools</button>
-                <button class="tab-btn" data-tab="pdf">PDF Tools</button>
-                <button class="tab-btn" data-tab="other">Other Tools</button>
-            </div>
-            
-            <div class="tools-grid">
-                <!-- Image Tools -->
-                <div class="tool-card" data-category="image">
-                    <div class="tool-icon">
-                        <i class="fas fa-compress-alt"></i>
-                    </div>
-                    <h3>Image Compressor</h3>
-                    <p>Reduce image file size without losing quality</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="image">
-                    <div class="tool-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Image Converter</h3>
-                    <p>Convert between JPG, PNG, WEBP and other formats</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="image">
-                    <div class="tool-icon">
-                        <i class="fas fa-crop"></i>
-                    </div>
-                    <h3>Image Cropper</h3>
-                    <p>Crop images to any size or aspect ratio</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="image">
-                    <div class="tool-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                    <h3>Image Resizer</h3>
-                    <p>Resize images while maintaining quality</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- PDF Tools -->
-                <div class="tool-card" data-category="pdf">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3>PDF Compressor</h3>
-                    <p>Reduce PDF file size without quality loss</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="pdf">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-word"></i>
-                    </div>
-                    <h3>PDF to Word</h3>
-                    <p>Convert PDF files to editable Word documents</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="pdf">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <h3>PDF to Excel</h3>
-                    <p>Extract tables from PDF to Excel spreadsheets</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="pdf">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-image"></i>
-                    </div>
-                    <h3>PDF to JPG</h3>
-                    <p>Convert PDF pages to high-quality JPG images</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <!-- Other Tools -->
-                <div class="tool-card" data-category="other">
-                    <div class="tool-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3>QR Code Generator</h3>
-                    <p>Create custom QR codes for URLs, text and more</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="other">
-                    <div class="tool-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Color Picker</h3>
-                    <p>Select colors and get HEX, RGB values</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="other">
-                    <div class="tool-icon">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <h3>Font Generator</h3>
-                    <p>Create stylish text with different fonts</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="tool-card" data-category="other">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-archive"></i>
-                    </div>
-                    <h3>File Converter</h3>
-                    <p>Convert between various file formats</p>
-                    <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+    <!-- Sidebar Ad Left -->
+    <div class="container">
+        <div class="ad-sidebar" style="float: left; margin-right: 20px;">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
-    </section>
+        
+        <!-- Tools Section -->
+        <section class="tools">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Popular Tools</h2>
+                    <p>Discover our collection of powerful tools to optimize your workflow</p>
+                </div>
+                
+                <div class="tools-tabs">
+                    <button class="tab-btn active" data-tab="all">All Tools</button>
+                    <button class="tab-btn" data-tab="image">Image Tools</button>
+                    <button class="tab-btn" data-tab="pdf">PDF Tools</button>
+                    <button class="tab-btn" data-tab="other">Other Tools</button>
+                </div>
+                
+                <div class="tools-grid">
+                    <!-- Image Tools -->
+                    <div class="tool-card" data-category="image">
+                        <div class="tool-icon">
+                            <i class="fas fa-compress-alt"></i>
+                        </div>
+                        <h3>Image Compressor</h3>
+                        <p>Reduce image file size without losing quality</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="image">
+                        <div class="tool-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3>Image Converter</h3>
+                        <p>Convert between JPG, PNG, WEBP and other formats</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="image">
+                        <div class="tool-icon">
+                            <i class="fas fa-crop"></i>
+                        </div>
+                        <h3>Image Cropper</h3>
+                        <p>Crop images to any size or aspect ratio</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="image">
+                        <div class="tool-icon">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                        <h3>Image Resizer</h3>
+                        <p>Resize images while maintaining quality</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- PDF Tools -->
+                    <div class="tool-card" data-category="pdf">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3>PDF Compressor</h3>
+                        <p>Reduce PDF file size without quality loss</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="pdf">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                        <h3>PDF to Word</h3>
+                        <p>Convert PDF files to editable Word documents</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="pdf">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                        <h3>PDF to Excel</h3>
+                        <p>Extract tables from PDF to Excel spreadsheets</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="pdf">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <h3>PDF to JPG</h3>
+                        <p>Convert PDF pages to high-quality JPG images</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <!-- Other Tools -->
+                    <div class="tool-card" data-category="other">
+                        <div class="tool-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h3>QR Code Generator</h3>
+                        <p>Create custom QR codes for URLs, text and more</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="other">
+                        <div class="tool-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Color Picker</h3>
+                        <p>Select colors and get HEX, RGB values</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="other">
+                        <div class="tool-icon">
+                            <i class="fas fa-font"></i>
+                        </div>
+                        <h3>Font Generator</h3>
+                        <p>Create stylish text with different fonts</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="tool-card" data-category="other">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-archive"></i>
+                        </div>
+                        <h3>File Converter</h3>
+                        <p>Convert between various file formats</p>
+                        <a href="#" class="tool-link">Use Tool <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sidebar Ad Right -->
+        <div class="ad-sidebar" style="float: right; margin-left: 20px;">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div style="clear: both;"></div>
+    </div>
     
     <!-- How It Works -->
     <section class="how-it-works">
         <div class="container">
             <div class="section-title">
-                <h2>How It Works</h2>
+                <h2>How ToolX Works</h2>
                 <p>Get started in just a few simple steps</p>
             </div>
             
@@ -932,6 +1012,22 @@
         </div>
     </section>
     
+    <!-- Middle Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
     <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
@@ -942,7 +1038,7 @@
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"This is hands down the best online toolset I've used. The image compressor reduced my website load time by 40% without noticeable quality loss."</p>
+                    <p class="testimonial-text">"ToolX is hands down the best online toolset I've used. The image compressor reduced my website load time by 40% without noticeable quality loss."</p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson" class="author-avatar">
                         <div class="author-info">
@@ -953,7 +1049,7 @@
                 </div>
                 
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"As a blogger, I use the PDF to Word converter daily. It's fast, accurate, and preserves all formatting perfectly. Saves me hours of work!"</p>
+                    <p class="testimonial-text">"As a blogger, I use ToolX's PDF to Word converter daily. It's fast, accurate, and preserves all formatting perfectly. Saves me hours of work!"</p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen" class="author-avatar">
                         <div class="author-info">
@@ -964,7 +1060,7 @@
                 </div>
                 
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"The batch processing feature is a game-changer for my e-commerce business. I can optimize hundreds of product images in minutes."</p>
+                    <p class="testimonial-text">"The batch processing feature is a game-changer for my e-commerce business. I can optimize hundreds of product images in minutes with ToolX."</p>
                     <div class="testimonial-author">
                         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Rodriguez" class="author-avatar">
                         <div class="author-info">
@@ -981,7 +1077,7 @@
     <section class="cta">
         <div class="container">
             <h2>Ready to Boost Your Productivity?</h2>
-            <p>Join thousands of satisfied users who save time with our powerful online tools</p>
+            <p>Join thousands of satisfied users who save time with ToolX's powerful online tools</p>
             
             <div class="cta-buttons">
                 <a href="#" class="btn btn-white">
@@ -994,6 +1090,22 @@
         </div>
     </section>
     
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner">
+            <!-- AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="YOUR_AD_SLOT_ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1001,7 +1113,7 @@
                 <div class="footer-about">
                     <a href="#" class="footer-logo">
                         <i class="fas fa-tools"></i>
-                        <span>ToolKitPro</span>
+                        <span>ToolX</span>
                     </a>
                     <p>Providing free, powerful online tools for images and PDFs since 2023. Our mission is to make file processing easy and accessible for everyone.</p>
                     <div class="social-links">
@@ -1058,7 +1170,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 ToolKitPro. All rights reserved.</p>
+                <p>&copy; 2023 ToolX. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1105,6 +1217,9 @@
                 }
             });
         });
+        
+        // Initialize all AdSense ads
+        (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </body>
 </html>
