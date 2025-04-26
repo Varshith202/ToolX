@@ -1,0 +1,47 @@
+<!-- tools/pdf/pdf-to-word.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Similar head content as index.html with tool-specific SEO -->
+    <title>PDF to Word Converter | ToolX</title>
+    <meta name="description" content="Convert PDF to editable Word documents with perfect formatting preservation. Login required to use this premium tool.">
+    
+    <!-- PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body data-theme="light">
+    <!-- Header (same as index.html) -->
+    
+    <main class="tool-page">
+        <div class="container">
+            <!-- Breadcrumb and tool header -->
+            
+            <!-- Auth check -->
+            <div id="toolAuthCheck" class="auth-check">
+                <i class="fas fa-lock"></i>
+                <p>You need to be logged in to use this tool</p>
+                <a href="/auth/login.html?redirect=/tools/pdf/pdf-to-word.html" class="btn btn-primary">Login</a>
+            </div>
+            
+            <!-- Tool interface (hidden by default) -->
+            <div id="toolInterface" style="display: none;">
+                <!-- Tool UI elements -->
+                <div class="ad-unit vertical" id="toolSideAd">
+                    <!-- AdSense will be injected here -->
+                </div>
+                
+                <!-- Conversion results -->
+                <div class="tool-results" id="resultsSection">
+                    <h3>Conversion Results</h3>
+                    <div id="resultsContainer"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer (same as index.html) -->
+    
+    <script src="/js/main.js"></script>
+    <script src="/js/tools/pdf-tools.js"></script>
+</body>
+</html>
