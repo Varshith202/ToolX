@@ -3,1258 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ToolX - Advanced online tools for PDF conversion, image processing, and file transformations. Experience futuristic file conversion technology.">
-    <meta name="keywords" content="ToolX, PDF converter, image converter, online tools, file conversion">
+    <meta name="description" content="ToolX - Premium online file conversion tools. Convert PDFs, images, videos and more. Login required to access our powerful tools.">
+    <meta name="keywords" content="PDF converter, image converter, video converter, online tools, file conversion">
     <meta name="author" content="ToolX">
-    <title>ToolX - Next-Gen File Conversion Tools</title>
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="ToolX - Professional File Conversion Tools">
+    <meta property="og:description" content="Convert files between formats with our premium online tools. Login required for access.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://toolx.example.com">
+    <meta property="og:image" content="https://toolx.example.com/assets/images/og-image.jpg">
+    <link rel="canonical" href="https://toolx.example.com">
     
-    <!-- Poppins Font -->
+    <title>ToolX - Premium Online File Conversion Tools</title>
+    
+    <!-- Preload important resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" as="style">
+    <link rel="preload" href="css/styles.css" as="style">
+    
+    <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
     
-    <style>
-        :root {
-            --primary-light: #6c5ce7;
-            --primary-dark: #5649d2;
-            --secondary: #00cec9;
-            --accent: #fd79a8;
-            --text-light: #f5f6fa;
-            --text-dark: #2d3436;
-            --bg-light: #f5f6fa;
-            --bg-dark: #1e272e;
-            --card-light: #ffffff;
-            --card-dark: #2f3640;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --neumorph-light: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
-            --neumorph-dark: 8px 8px 16px #1a2026, -8px -8px 16px #222a32;
-        }
-
-        [data-theme="light"] {
-            --primary: var(--primary-light);
-            --text: var(--text-dark);
-            --bg: var(--bg-light);
-            --card: var(--card-light);
-            --neumorph: var(--neumorph-light);
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="dark"] {
-            --primary: var(--primary-dark);
-            --text: var(--text-light);
-            --bg: var(--bg-dark);
-            --card: var(--card-dark);
-            --neumorph: var(--neumorph-dark);
-            --shadow-color: rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background-color: var(--card);
-            box-shadow: 0 2px 20px var(--shadow-color);
-            backdrop-filter: blur(10px);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--text);
-        }
-
-        .logo i {
-            margin-right: 12px;
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 25px;
-            position: relative;
-        }
-
-        nav ul li a {
-            font-weight: 600;
-            font-size: 1rem;
-            padding: 8px 0;
-            position: relative;
-            opacity: 0.9;
-        }
-
-        nav ul li a:hover {
-            opacity: 1;
-            color: var(--primary);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--primary);
-            transition: var(--transition);
-            border-radius: 3px;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            cursor: pointer;
-            color: var(--text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--card);
-            box-shadow: var(--neumorph);
-        }
-
-        .auth-btn {
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid var(--primary);
-        }
-
-        .login-btn {
-            background-color: transparent;
-            color: var(--primary);
-        }
-
-        .login-btn:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .signup-btn {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .signup-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
-            z-index: 1001;
-        }
-
-        /* Auth Modal */
-        .auth-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .auth-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .auth-container {
-            background-color: var(--card);
-            border-radius: var(--border-radius);
-            width: 100%;
-            max-width: 400px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transform: translateY(-20px);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .auth-modal.active .auth-container {
-            transform: translateY(0);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
-            opacity: 0.7;
-        }
-
-        .close-modal:hover {
-            opacity: 1;
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .auth-tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: 600;
-            position: relative;
-            opacity: 0.7;
-        }
-
-        .auth-tab.active {
-            opacity: 1;
-            color: var(--primary);
-        }
-
-        .auth-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 3px 3px 0 0;
-        }
-
-        .auth-form {
-            display: none;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-        }
-
-        .auth-submit {
-            width: 100%;
-            padding: 12px;
-            border-radius: var(--border-radius);
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 10px;
-        }
-
-        .auth-submit:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .auth-footer {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .auth-footer a {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .auth-message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: var(--border-radius);
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .error-message {
-            background-color: rgba(231, 76, 60, 0.1);
-            color: #e74c3c;
-        }
-
-        .success-message {
-            background-color: rgba(46, 204, 113, 0.1);
-            color: #2ecc71;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-right: 10px;
-        }
-
-        .user-name {
-            font-weight: 600;
-            margin-right: 5px;
-        }
-
-        .user-menu {
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: var(--card);
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 20px var(--shadow-color);
-            padding: 10px 0;
-            width: 200px;
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: var(--transition);
-        }
-
-        .user-profile:hover .user-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .user-menu-item {
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .user-menu-item:hover {
-            background-color: var(--bg);
-            color: var(--primary);
-        }
-
-        .user-menu-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 180px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0) 70%);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        .hero-cta {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-            box-shadow: 0 4px 14px rgba(108, 92, 231, 0.4);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.5);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(108, 92, 231, 0.1);
-            transform: translateY(-3px);
-        }
-
-        .btn i {
-            margin-right: 8px;
-        }
-
-        /* Tools Section */
-        .tools-section {
-            padding: 80px 0;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-
-        .section-actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        .section-filter {
-            padding: 10px 15px;
-            border-radius: var(--border-radius);
-            background-color: var(--card);
-            border: none;
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            cursor: pointer;
-            box-shadow: var(--neumorph);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .tool-card {
-            background-color: var(--card);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: var(--box-shadow);
-            position: relative;
-            z-index: 1;
-        }
-
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            opacity: 0;
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .tool-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .tool-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .tool-card:hover .tool-icon {
-            color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        .tool-icon {
-            padding: 30px;
-            text-align: center;
-            font-size: 2.5rem;
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .tool-info {
-            padding: 0 25px 25px;
-        }
-
-        .tool-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .tool-desc {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-
-        .tool-link {
-            display: inline-flex;
-            align-items: center;
-            font-weight: 600;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .tool-link i {
-            margin-left: 5px;
-            transition: var(--transition);
-        }
-
-        .tool-link:hover {
-            color: var(--secondary);
-        }
-
-        .tool-link:hover i {
-            transform: translateX(5px);
-        }
-
-        /* Categories */
-        .categories {
-            padding: 60px 0;
-            background-color: var(--card);
-        }
-
-        .category-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .category-tab {
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            background-color: var(--bg);
-            color: var(--text);
-            border: none;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .category-tab.active, .category-tab:hover {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-        }
-
-        /* Features */
-        .features {
-            padding: 80px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-card {
-            text-align: center;
-            padding: 40px 30px;
-            border-radius: var(--border-radius);
-            background-color: var(--card);
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--primary);
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(0, 206, 201, 0.1));
-            border-radius: 50%;
-        }
-
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 0;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z"></path></svg>');
-            background-size: cover;
-            opacity: 0.2;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .cta-subtitle {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-            position: relative;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .cta-btn {
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .cta-btn-primary {
-            background-color: white;
-            color: var(--primary);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-btn-secondary {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .cta-btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--card);
-            padding: 80px 0 30px;
-            color: var(--text);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .footer-about {
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg);
-            color: var(--text);
-            transition: var(--transition);
-        }
-
-        .social-link:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 3px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            opacity: 0.8;
-            transition: var(--transition);
-            display: inline-block;
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        /* Tool Page */
-        .tool-page {
-            padding: 150px 0 80px;
-        }
-
-        .tool-header {
-            margin-bottom: 50px;
-        }
-
-        .tool-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .tool-desc {
-            font-size: 1.1rem;
-            max-width: 700px;
-            opacity: 0.9;
-        }
-
-        .tool-container {
-            background-color: var(--card);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 40px;
-            margin-bottom: 40px;
-        }
-
-        .tool-interface {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 30px;
-            border: 2px dashed rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            margin-bottom: 30px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .tool-interface:hover {
-            border-color: var(--primary);
-        }
-
-        .tool-interface i {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .tool-interface p {
-            margin-bottom: 25px;
-            opacity: 0.8;
-            font-size: 1.1rem;
-        }
-
-        .upload-btn {
-            padding: 15px 30px;
-            border-radius: var(--border-radius);
-            background-color: var(--primary);
-            color: white;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-        }
-
-        .upload-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.5);
-        }
-
-        .upload-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-
-        .tool-options {
-            width: 100%;
-            margin-top: 30px;
-        }
-
-        .option-group {
-            margin-bottom: 25px;
-        }
-
-        .option-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .option-group select, .option-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-        }
-
-        .option-group select:focus, .option-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-        }
-
-        .convert-btn {
-            width: 100%;
-            padding: 15px;
-            border-radius: var(--border-radius);
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .convert-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            opacity: 0.9;
-        }
-
-        .tool-results {
-            display: none;
-            margin-top: 40px;
-        }
-
-        .results-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: var(--bg);
-            border-radius: var(--border-radius);
-            margin-bottom: 15px;
-            transition: var(--transition);
-        }
-
-        .result-item:hover {
-            transform: translateX(5px);
-        }
-
-        .result-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .result-icon {
-            margin-right: 15px;
-            font-size: 1.8rem;
-            color: var(--primary);
-        }
-
-        .result-details h4 {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .result-details p {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .result-actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        .result-action {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--card);
-            color: var(--text);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .result-action:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .header-container {
-                padding: 15px 0;
-            }
-            
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 300px;
-                height: 100vh;
-                background-color: var(--card);
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-                padding: 80px 30px 30px;
-                transition: var(--transition);
-                z-index: 1000;
-            }
-            
-            nav.active {
-                right: 0;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero {
-                padding: 150px 0 80px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-            }
-            
-            .tool-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-cta, .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .btn, .cta-btn {
-                width: 100%;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-            
-            .tool-page {
-                padding: 120px 0 60px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .auth-container {
-                padding: 20px;
-            }
-            
-            .auth-tab {
-                padding: 10px;
-                font-size: 0.9rem;
-            }
-            
-            .tool-container {
-                padding: 25px;
-            }
-            
-            .tool-interface {
-                padding: 30px 20px;
-            }
-        }
-    </style>
+    <!-- Structured data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ToolX",
+      "url": "https://toolx.example.com",
+      "description": "Premium online file conversion tools for PDF, images, videos and more.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "ToolX"
+      }
+    }
+    </script>
 </head>
 <body data-theme="light">
+    <!-- Auth wall overlay -->
+    <div class="auth-wall" id="authWall">
+        <div class="auth-wall-content">
+            <h2>Login Required</h2>
+            <p>You need to login to access our premium tools</p>
+            <div class="auth-wall-buttons">
+                <a href="/auth/login.html" class="btn btn-primary">Login</a>
+                <a href="/auth/signup.html" class="btn btn-secondary">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1266,10 +73,10 @@
             <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="pdf-tools.html">PDF Tools</a></li>
-                    <li><a href="image-tools.html">Image Tools</a></li>
-                    <li><a href="other-tools.html">Other Tools</a></li>
-                    <li><a href="pricing.html">Premium</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             
@@ -1279,8 +86,8 @@
                 </button>
                 
                 <div id="authButtons">
-                    <button class="auth-btn login-btn" id="loginBtn">Login</button>
-                    <button class="auth-btn signup-btn" id="signupBtn">Sign Up</button>
+                    <a href="/auth/login.html" class="auth-btn login-btn">Login</a>
+                    <a href="/auth/signup.html" class="auth-btn signup-btn">Sign Up</a>
                 </div>
                 
                 <div id="userProfile" class="user-profile" style="display: none;">
@@ -1289,18 +96,14 @@
                     <i class="fas fa-chevron-down"></i>
                     
                     <div class="user-menu">
-                        <div class="user-menu-item">
+                        <a href="/account.html" class="user-menu-item">
                             <i class="fas fa-user"></i>
-                            <span>Profile</span>
-                        </div>
-                        <div class="user-menu-item">
+                            <span>Account</span>
+                        </a>
+                        <a href="/history.html" class="user-menu-item">
                             <i class="fas fa-history"></i>
                             <span>History</span>
-                        </div>
-                        <div class="user-menu-item">
-                            <i class="fas fa-cog"></i>
-                            <span>Settings</span>
-                        </div>
+                        </a>
                         <div class="user-menu-item" id="logoutBtn">
                             <i class="fas fa-sign-out-alt"></i>
                             <span>Logout</span>
@@ -1315,302 +118,59 @@
         </div>
     </header>
     
-    <!-- Auth Modal -->
-    <div class="auth-modal" id="authModal">
-        <div class="auth-container">
-            <div class="close-modal" id="closeModal">
-                <i class="fas fa-times"></i>
-            </div>
-            
-            <div class="auth-tabs">
-                <div class="auth-tab active" data-tab="login">Login</div>
-                <div class="auth-tab" data-tab="signup">Sign Up</div>
-            </div>
-            
-            <div class="auth-message" id="authMessage" style="display: none;"></div>
-            
-            <form class="auth-form active" id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
-                </div>
-                
-                <button type="submit" class="auth-submit">Login</button>
-                
-                <div class="auth-footer">
-                    <span>Don't have an account? </span>
-                    <a href="#" id="showSignup">Sign Up</a>
-                </div>
-            </form>
-            
-            <form class="auth-form" id="signupForm">
-                <div class="form-group">
-                    <label for="signupName">Full Name</label>
-                    <input type="text" id="signupName" class="form-control" placeholder="Enter your full name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
-                </div>
-                
-                <button type="submit" class="auth-submit">Create Account</button>
-                
-                <div class="auth-footer">
-                    <span>Already have an account? </span>
-                    <a href="#" id="showLogin">Login</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <!-- Hero Section -->
+    <!-- Hero Section with Ad -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Transform Your Files With ToolX</h1>
-                <p class="hero-subtitle">Advanced online tools for PDF conversion, image processing, and file transformations. Experience next-generation file conversion technology.</p>
+                <h1 class="hero-title">Professional File Conversion Tools</h1>
+                <p class="hero-subtitle">Convert between PDF, images, videos and more with our premium online tools</p>
                 
                 <div class="hero-cta">
-                    <a href="#tools" class="btn btn-primary">
-                        <i class="fas fa-bolt"></i> Explore Tools
+                    <a href="/auth/signup.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Get Started
                     </a>
-                    <a href="pricing.html" class="btn btn-secondary">
-                        <i class="fas fa-crown"></i> Go Premium
+                    <a href="#tools" class="btn btn-secondary">
+                        <i class="fas fa-tools"></i> Explore Tools
                     </a>
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- Popular Tools Section -->
-    <section class="tools-section" id="tools">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Popular Tools</h2>
-                <div class="section-actions">
-                    <select class="section-filter">
-                        <option>All Categories</option>
-                        <option>PDF Tools</option>
-                        <option>Image Tools</option>
-                        <option>Document Tools</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="tools-grid">
-                <!-- PDF to Word -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-file-word"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PDF to Word</h3>
-                        <p class="tool-desc">Convert PDF documents to editable Word files while preserving formatting.</p>
-                        <a href="pdf-to-word.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- PNG to JPG -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-image"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PNG to JPG</h3>
-                        <p class="tool-desc">Convert PNG images to JPG format with adjustable quality settings.</p>
-                        <a href="png-to-jpg.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- PDF Compressor -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-compress-alt"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PDF Compressor</h3>
-                        <p class="tool-desc">Reduce PDF file size without significant quality loss.</p>
-                        <a href="pdf-compressor.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Word to PDF -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-file-pdf"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">Word to PDF</h3>
-                        <p class="tool-desc">Convert Word documents to PDF format with a single click.</p>
-                        <a href="word-to-pdf.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- JPG to PNG -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-image"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">JPG to PNG</h3>
-                        <p class="tool-desc">Convert JPG images to PNG format with transparent background support.</p>
-                        <a href="jpg-to-png.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- PDF Merger -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PDF Merger</h3>
-                        <p class="tool-desc">Combine multiple PDF files into a single document in seconds.</p>
-                        <a href="pdf-merger.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Categories Section -->
-    <section class="categories">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Browse by Category</h2>
-            </div>
-            
-            <div class="category-tabs">
-                <button class="category-tab active">All Tools</button>
-                <button class="category-tab">PDF Tools</button>
-                <button class="category-tab">Image Tools</button>
-                <button class="category-tab">Document Tools</button>
-                <button class="category-tab">Video Tools</button>
-                <button class="category-tab">Audio Tools</button>
-            </div>
-            
-            <div class="tools-grid">
-                <!-- PDF to Excel -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-file-excel"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PDF to Excel</h3>
-                        <p class="tool-desc">Extract tables from PDFs to editable Excel spreadsheets.</p>
-                        <a href="pdf-to-excel.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- PDF to PowerPoint -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-file-powerpoint"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">PDF to PowerPoint</h3>
-                        <p class="tool-desc">Convert PDF slides to editable PowerPoint presentations.</p>
-                        <a href="pdf-to-powerpoint.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- WebP Converter -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-image"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">WebP Converter</h3>
-                        <p class="tool-desc">Convert WebP images to JPG or PNG format.</p>
-                        <a href="webp-converter.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- HEIC to JPG -->
-                <div class="tool-card">
-                    <div class="tool-icon">
-                        <i class="far fa-image"></i>
-                    </div>
-                    <div class="tool-info">
-                        <h3 class="tool-title">HEIC to JPG</h3>
-                        <p class="tool-desc">Convert iPhone HEIC photos to widely compatible JPG format.</p>
-                        <a href="heic-to-jpg.html" class="tool-link">
-                            Use Tool <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+        
+        <!-- Top Ad Unit -->
+        <div class="ad-unit horizontal" id="topAd">
+            <!-- AdSense will be injected here -->
         </div>
     </section>
     
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="features">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Why Choose ToolX</h2>
+                <p class="section-subtitle">Premium tools with professional results</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="feature-title">Lightning Fast</h3>
-                    <p class="feature-desc">Our optimized algorithms process files in seconds, saving you valuable time.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <h3 class="feature-title">Secure Processing</h3>
-                    <p class="feature-desc">Your files are protected with end-to-end encryption and automatic deletion.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3 class="feature-title">No Installation</h3>
-                    <p class="feature-desc">Access all tools directly from your browser without any downloads.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <h3 class="feature-title">Unlimited Conversions</h3>
-                    <p class="feature-desc">Convert as many files as you need with our premium plans.</p>
-                </div>
+                <!-- Feature cards... -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tools Section with Ad -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Tools</h2>
+                <p class="section-subtitle">Login to access all premium tools</p>
+            </div>
+            
+            <!-- Middle Ad Unit -->
+            <div class="ad-unit horizontal" id="middleAd">
+                <!-- AdSense will be injected here -->
+            </div>
+            
+            <div class="tools-grid">
+                <!-- Tool cards... -->
             </div>
         </div>
     </section>
@@ -1619,15 +179,15 @@
     <section class="cta-section">
         <div class="container">
             <h2 class="cta-title">Ready to Transform Your Files?</h2>
-            <p class="cta-subtitle">Join thousands of users who trust ToolX for their file conversion needs. Get started today for free or upgrade for premium features.</p>
+            <p class="cta-subtitle">Create an account to access all premium tools</p>
             
             <div class="cta-buttons">
-                <button class="cta-btn cta-btn-primary">
-                    <i class="fas fa-rocket"></i> Start Converting
-                </button>
-                <button class="cta-btn cta-btn-secondary">
-                    <i class="fas fa-crown"></i> Go Premium
-                </button>
+                <a href="/auth/signup.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-user-plus"></i> Sign Up Free
+                </a>
+                <a href="#pricing" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-crown"></i> Premium Plans
+                </a>
             </div>
         </div>
     </section>
@@ -1636,259 +196,25 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="footer-logo">
-                        <i class="fas fa-cogs"></i> ToolX
-                    </a>
-                    <p class="footer-about">ToolX provides advanced online tools for file conversion, processing and transformation. Our mission is to make file conversion simple and accessible for everyone.</p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">PDF Tools</h3>
-                    <ul class="footer-links">
-                        <li><a href="pdf-to-word.html">PDF to Word</a></li>
-                        <li><a href="pdf-to-excel.html">PDF to Excel</a></li>
-                        <li><a href="pdf-compressor.html">PDF Compressor</a></li>
-                        <li><a href="pdf-merger.html">PDF Merger</a></li>
-                        <li><a href="pdf-to-powerpoint.html">PDF to PowerPoint</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Image Tools</h3>
-                    <ul class="footer-links">
-                        <li><a href="png-to-jpg.html">PNG to JPG</a></li>
-                        <li><a href="jpg-to-png.html">JPG to PNG</a></li>
-                        <li><a href="webp-converter.html">WebP Converter</a></li>
-                        <li><a href="heic-to-jpg.html">HEIC to JPG</a></li>
-                        <li><a href="image-compressor.html">Image Compressor</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="help.html">Help Center</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Support</a></li>
-                    </ul>
-                </div>
+                <!-- Footer content... -->
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear"></span> ToolX. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="/privacy.html">Privacy Policy</a>
+                    <a href="/terms.html">Terms of Service</a>
+                    <a href="/cookies.html">Cookie Policy</a>
+                </div>
             </div>
         </div>
     </footer>
     
-    <!-- JavaScript -->
-    <script>
-        // Firebase Configuration (Replace with your config)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        
-        // DOM Elements
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mainNav = document.getElementById('mainNav');
-        const authModal = document.getElementById('authModal');
-        const closeModal = document.getElementById('closeModal');
-        const loginBtn = document.getElementById('loginBtn');
-        const signupBtn = document.getElementById('signupBtn');
-        const showLogin = document.getElementById('showLogin');
-        const showSignup = document.getElementById('showSignup');
-        const authTabs = document.querySelectorAll('.auth-tab');
-        const authForms = document.querySelectorAll('.auth-form');
-        const loginForm = document.getElementById('loginForm');
-        const signupForm = document.getElementById('signupForm');
-        const authMessage = document.getElementById('authMessage');
-        const authButtons = document.getElementById('authButtons');
-        const userProfile = document.getElementById('userProfile');
-        const userName = document.getElementById('userName');
-        const userAvatar = document.getElementById('userAvatar');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const currentYear = document.getElementById('currentYear');
-        
-        // Set current year
-        currentYear.textContent = new Date().getFullYear();
-        
-        // Theme Toggle
-        themeToggle.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            themeToggle.innerHTML = isDark ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-            
-            // Save preference to localStorage
-            localStorage.setItem('theme', isDark ? 'light' : 'dark');
-        });
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        body.setAttribute('data-theme', savedTheme);
-        themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        
-        // Mobile Menu Toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Auth Modal Toggle
-        const toggleAuthModal = () => {
-            authModal.classList.toggle('active');
-            document.body.style.overflow = authModal.classList.contains('active') ? 'hidden' : '';
-        };
-        
-        loginBtn.addEventListener('click', toggleAuthModal);
-        signupBtn.addEventListener('click', () => {
-            toggleAuthModal();
-            switchAuthTab('signup');
-        });
-        closeModal.addEventListener('click', toggleAuthModal);
-        showLogin.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchAuthTab('login');
-        });
-        showSignup.addEventListener('click', (e) => {
-            e.preventDefault();
-            switchAuthTab('signup');
-        });
-        
-        // Switch between login/signup tabs
-        const switchAuthTab = (tab) => {
-            authTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-            authForms.forEach(f => f.classList.toggle('active', f.id === `${tab}Form`));
-        };
-        
-        authTabs.forEach(tab => {
-            tab.addEventListener('click', () => switchAuthTab(tab.dataset.tab));
-        });
-        
-        // Show auth message
-        const showAuthMessage = (message, type) => {
-            authMessage.textContent = message;
-            authMessage.className = 'auth-message ' + type;
-            authMessage.style.display = 'block';
-            
-            setTimeout(() => {
-                authMessage.style.opacity = '0';
-                setTimeout(() => {
-                    authMessage.style.display = 'none';
-                    authMessage.style.opacity = '1';
-                }, 300);
-            }, 5000);
-        };
-        
-        // Login with Firebase
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = loginForm['loginEmail'].value;
-            const password = loginForm['loginPassword'].value;
-            
-            auth.signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed in
-                    toggleAuthModal();
-                    loginForm.reset();
-                })
-                .catch((error) => {
-                    showAuthMessage(error.message, 'error-message');
-                });
-        });
-        
-        // Signup with Firebase
-        signupForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = signupForm['signupName'].value;
-            const email = signupForm['signupEmail'].value;
-            const password = signupForm['signupPassword'].value;
-            
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed up
-                    return userCredential.user.updateProfile({
-                        displayName: name
-                    });
-                })
-                .then(() => {
-                    toggleAuthModal();
-                    signupForm.reset();
-                    showAuthMessage('Account created successfully!', 'success-message');
-                })
-                .catch((error) => {
-                    showAuthMessage(error.message, 'error-message');
-                });
-        });
-        
-        // Logout
-        logoutBtn.addEventListener('click', () => {
-            auth.signOut();
-        });
-        
-        // Auth State Listener
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                // User is signed in
-                authButtons.style.display = 'none';
-                userProfile.style.display = 'flex';
-                userName.textContent = user.displayName || user.email.split('@')[0];
-                userAvatar.textContent = user.displayName ? user.displayName.charAt(0).toUpperCase() : user.email.charAt(0).toUpperCase();
-            } else {
-                // User is signed out
-                authButtons.style.display = 'flex';
-                userProfile.style.display = 'none';
-            }
-        });
-        
-        // Tool functionality would be implemented in separate JS files for each tool
-        // This is just a placeholder for the demo
-        document.querySelectorAll('.tool-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (!e.target.closest('.tool-link')) {
-                    window.location.href = card.querySelector('.tool-link').href;
-                }
-            });
-        });
-        
-        // Category filter functionality
-        document.querySelectorAll('.category-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelector('.category-tab.active').classList.remove('active');
-                tab.classList.add('active');
-                // In a real implementation, this would filter the tools
-            });
-        });
-    </script>
+    <!-- Firebase and other scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ads.js" async></script>
 </body>
 </html>
